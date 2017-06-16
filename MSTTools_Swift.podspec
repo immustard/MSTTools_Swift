@@ -6,8 +6,6 @@
 #  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
 #
 
-Pod::Spec.new do |s|
-
   Pod::Spec.new do |s|
 
   s.name         = "MSTTools_Swift"
@@ -31,4 +29,4 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
-end
+  end
