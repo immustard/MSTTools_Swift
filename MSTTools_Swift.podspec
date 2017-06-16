@@ -23,7 +23,7 @@
 
   s.source       = { :git => "https://github.com/immustard/MSTTools_Swift.git", :tag => "#{s.version}" }
 
-  s.source_files  = "MSTTools_Swift", "MSTTools_Swift/**/*.{h,m}"
+  s.source_files  = "MSTTools_Swift", "MSTTools_Swift/**/*.swift"
 
   s.framework  = "UIKit"
 
