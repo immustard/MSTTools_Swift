@@ -9,7 +9,7 @@
   Pod::Spec.new do |s|
 
   s.name         = "MSTTools_Swift"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "Tools in common use."
   s.description  = <<-DESC
   Tools in common use...

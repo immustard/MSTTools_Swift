@@ -34,7 +34,7 @@ public let kSearchBarHeight = 44
 
 
 // MARK: - 访问权限
-class MSTTools {
+open class MSTTools {
     public enum AuthorType {
         case album
         case capture
@@ -92,22 +92,33 @@ class MSTTools {
 // MARK:- 系统
 extension MSTTools {
     /// 获取 App 版本号 (浮点型)
-    ///
-    /// - Returns: 版本号
     public class func appVersion() -> Double {
         return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! Double
     }
     
     /// 获取 App 版本号 (字符串)
-    ///
-    /// - Returns: 版本号
     public class func appStringVersion() -> String {
         return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+    }
+    
+    /// 获取 App 名称
+    public class func appDisplayName() -> String {
+        return Bundle.main.infoDictionary!["CFBundleDisplayName"] as! String
     }
     
     /// BundleID
     public class func appBundleIdentifier() -> String {
         return Bundle.main.bundleIdentifier!
+    }
+    
+    // 内部版本号 (浮点型)
+    public class func bundleVersion() -> Double {
+        return Bundle.main.infoDictionary![String(kCFBundleVersionKey)] as! Double
+    }
+    
+    // 内部版本号 (字符串)
+    public class func bundleStringVersion() -> String {
+        return Bundle.main.infoDictionary![String(kCFBundleVersionKey)] as! String
     }
     
     /// 系统版本号
