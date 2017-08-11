@@ -126,6 +126,11 @@ extension MSTTools {
         return Double(UIDevice.current.systemVersion)!
     }
     
+    /// 手机ID (UUID)
+    public class func deviceID() -> String {
+        return (UIDevice.current.identifierForVendor?.uuidString)!
+    }
+    
     /// 是否是 iPad
     public class func isiPad() -> Bool {
         return UI_USER_INTERFACE_IDIOM() == .pad
