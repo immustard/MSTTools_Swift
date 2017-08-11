@@ -9,7 +9,7 @@
 import Foundation
 
 extension Double {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -18,7 +18,7 @@ extension Double {
 }
 
 extension Int {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -27,7 +27,7 @@ extension Int {
 }
 
 extension Int8 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -36,7 +36,7 @@ extension Int8 {
 }
 
 extension Int16 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -44,7 +44,7 @@ extension Int16 {
     }
 }
 extension Int32 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -52,7 +52,7 @@ extension Int32 {
     }
 }
 extension Int64 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -61,7 +61,7 @@ extension Int64 {
 }
 
 extension UInt {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -70,7 +70,7 @@ extension UInt {
 }
 
 extension UInt8 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -79,7 +79,7 @@ extension UInt8 {
 }
 
 extension UInt16 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -87,7 +87,7 @@ extension UInt16 {
     }
 }
 extension UInt32 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         
@@ -95,7 +95,7 @@ extension UInt32 {
     }
 }
 extension UInt64 {
-    var mst_spellOut: String {
+    public var mst_spellOut: String {
         let formatter: NumberFormatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         

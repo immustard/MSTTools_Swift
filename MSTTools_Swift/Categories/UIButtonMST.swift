@@ -19,7 +19,7 @@ import UIKit
  */
 
 extension UIButton {
-    enum MSTButtonEdgeOfImageStyle {
+    public enum MSTButtonEdgeOfImageStyle {
         case top            // 图片在上，文字在下
         case left           // 图片在左，文字在右
         case bottom         // 图片在下，文字在上
@@ -32,7 +32,7 @@ extension UIButton {
     /// - Parameters:
     ///   - style: 布局方式
     ///   - space: 间距
-    func mst_layoutButton(style: MSTButtonEdgeOfImageStyle, spaceBetweenImageAndTitle space: CGFloat) {
+    public func mst_layoutButton(style: MSTButtonEdgeOfImageStyle, spaceBetweenImageAndTitle space: CGFloat) {
         // 1. 得到imageView和titleLabel的宽、高
         let imageWidth: CGFloat = imageView?.frame.size.width ?? 0
         let imageHeight: CGFloat = imageView?.frame.size.height ?? 0

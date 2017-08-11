@@ -9,7 +9,7 @@
   Pod::Spec.new do |s|
 
   s.name         = "MSTTools_Swift"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "Tools in common use."
   s.description  = <<-DESC
   Tools in common use...
@@ -23,7 +23,7 @@
 
   s.source       = { :git => "https://github.com/immustard/MSTTools_Swift.git", :tag => "#{s.version}" }
 
-  s.source_files  = "MSTTools_Swift", "MSTTools_Swift/**/*.swift"
+  s.source_files  = "MSTTools_Swift", "MSTTools_Swift/**/*.{swift}"
 
   s.framework  = "UIKit"
 

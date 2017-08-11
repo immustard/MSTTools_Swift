@@ -21,7 +21,7 @@ extension UIImage {
     ///
     /// - Parameter fileName: 文件名称
     /// - Returns: 图片
-    class func mst_newImageFromResource(fileName: String) -> UIImage? {
+    public class func mst_newImageFromResource(fileName: String) -> UIImage? {
         let imageFile: String = "\(String(describing: Bundle.main.resourcePath))/\(fileName)"
         
         var image: UIImage?
@@ -34,7 +34,7 @@ extension UIImage {
     ///
     /// - Parameter color: 颜色
     /// - Returns: 返回 1*1 的图片
-    class func mst_createImage(color: UIColor) -> UIImage {
+    public class func mst_createImage(color: UIColor) -> UIImage {
         let rect: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
         
         UIGraphicsBeginImageContext(rect.size)
@@ -54,7 +54,7 @@ extension UIImage {
     ///
     /// - Parameter view: 被截取的View
     /// - Returns: 截取图片
-    class func mst_image(view: UIView) -> UIImage {
+    public class func mst_image(view: UIView) -> UIImage {
         UIGraphicsBeginImageContext(view.bounds.size)
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
         
@@ -68,7 +68,7 @@ extension UIImage {
     ///
     /// - Parameter rect: 截取区域
     /// - Returns: 截取图片
-    func mst_image(rect: CGRect) -> UIImage {
+    public func mst_image(rect: CGRect) -> UIImage {
         let imageRef: CGImage = cgImage!.cropping(to: rect)!
         
         return UIImage(cgImage: imageRef)
@@ -78,7 +78,7 @@ extension UIImage {
     ///
     /// - Parameter targetSize: 目标尺寸
     /// - Returns: 缩放后图片
-    func mst_imageByScalingProportionally(toMinimumSize targetSize: CGSize) -> UIImage? {
+    public func mst_imageByScalingProportionally(toMinimumSize targetSize: CGSize) -> UIImage? {
         var newImage: UIImage?
         
         let width: CGFloat = size.width
@@ -136,7 +136,7 @@ extension UIImage {
     ///
     /// - Parameter targetSize: 目标尺寸
     /// - Returns: 缩放后图片
-    func mst_imageByScalingProportionally(toSize targetSize: CGSize) -> UIImage? {
+    public func mst_imageByScalingProportionally(toSize targetSize: CGSize) -> UIImage? {
         var newImage: UIImage?
         
         let width: CGFloat = size.width
@@ -195,7 +195,7 @@ extension UIImage {
     ///
     /// - Parameter dedineWidth: 目标宽度
     /// - Returns: 压缩后图片
-    func mst_imageCompress(width defineWidth: CGFloat) -> UIImage? {
+    public func mst_imageCompress(width defineWidth: CGFloat) -> UIImage? {
         var newImage: UIImage?
 
         let width: CGFloat = self.size.width
@@ -253,7 +253,7 @@ extension UIImage {
     ///
     /// - Parameter degrees: 旋转角度
     /// - Returns: 旋转后图片
-    func mst_imageRotated(degrees: CGFloat) -> UIImage {
+    public func mst_imageRotated(degrees: CGFloat) -> UIImage {
         // 首先计算旋转之后的视图的尺寸
         let rotatedViewBox: UIView = UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         let t: CGAffineTransform = CGAffineTransform(rotationAngle: DegreesToRadians(degrees))
@@ -284,7 +284,7 @@ extension UIImage {
     ///
     /// - Parameter radians: 旋转角度
     /// - Returns: 旋转后图片
-    func mst_imageRotated(radians: CGFloat) -> UIImage {
+    public func mst_imageRotated(radians: CGFloat) -> UIImage {
         return mst_imageRotated(degrees: RadiansToDegrees(radians))
     }
     
@@ -292,7 +292,7 @@ extension UIImage {
     ///
     /// - Parameter blur: 效果参数
     /// - Returns: 结果图片
-    func mst_coreBlur(blurNumber blur: CGFloat) -> UIImage {
+    public func mst_coreBlur(blurNumber blur: CGFloat) -> UIImage {
         let context: CIContext = CIContext(options: nil)
         let inputImage: CIImage = CIImage(cgImage: cgImage!)
         
@@ -313,7 +313,7 @@ extension UIImage {
     ///
     /// - Parameter point: 目标点
     /// - Returns: 拉伸图片
-    func mst_stretchImage(capPoint point: CGPoint) -> UIImage {
+    public func mst_stretchImage(capPoint point: CGPoint) -> UIImage {
         let streImage: UIImage = stretchableImage(withLeftCapWidth: Int(point.x), topCapHeight: Int(point.y))
         return streImage
     }
@@ -321,7 +321,7 @@ extension UIImage {
     /// 将图片截取为正方形
     ///
     /// - Returns: 截取后图片
-    func mst_cropedImageToSquare() -> UIImage {
+    public func mst_cropedImageToSquare() -> UIImage {
         var cropRect: CGRect!
         
         if size.height > size.width {
@@ -339,7 +339,7 @@ extension UIImage {
     /// 修正图片方向
     ///
     /// - Returns: 修正后图片
-    func mst_fixOrientation() -> UIImage {
+    public func mst_fixOrientation() -> UIImage {
         guard imageOrientation != .up else { return self }
         
         var transform: CGAffineTransform = CGAffineTransform.identity

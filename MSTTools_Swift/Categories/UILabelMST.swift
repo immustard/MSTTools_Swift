@@ -9,7 +9,7 @@
 import UIKit
 
 extension UILabel {
-    func mst_addLongPressCopyMenu() {
+    public func mst_addLongPressCopyMenu() {
         isUserInteractionEnabled = true
         
         let longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(mp_showCopyMenu))

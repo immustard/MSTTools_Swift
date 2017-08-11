@@ -9,40 +9,40 @@
 import Photos
 
 // MARK: - Macros
-var kScreenWidth: CGFloat {
+public var kScreenWidth: CGFloat {
     return UIScreen.main.bounds.size.width
 }
 
-var kScreenHeight: CGFloat {
+public var kScreenHeight: CGFloat {
     return UIScreen.main.bounds.size.height
 }
 
-var kScreenSize: CGSize {
+public var kScreenSize: CGSize {
     return UIScreen.main.bounds.size
 }
 
-var kScreenScale: CGFloat {
+public var kScreenScale: CGFloat {
     return UIScreen.main.scale
 }
 
-let kNavHeight = 64
+public let kNavHeight = 64
 
-let kTabarHeight = 49
+public let kTabarHeight = 49
 
-let kSearchBarHeight = 44
+public let kSearchBarHeight = 44
 
 
 
 // MARK: - 访问权限
 class MSTTools {
-    enum AuthorType {
+    public enum AuthorType {
         case album
         case capture
         case microphone
         case location
     }
     
-    enum AuthorResult {
+    public enum AuthorResult {
         case authorized
         case denied
         case notDetermined
@@ -52,7 +52,7 @@ class MSTTools {
     ///
     /// - Parameter type: 类型(相册、相机、定位等)
     /// - Returns: 是否可以访问
-    class func authorization(authorType type: AuthorType) -> AuthorResult {
+    public class func authorization(authorType type: AuthorType) -> AuthorResult {
         switch type {
         case .album:
             let author: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
@@ -94,29 +94,29 @@ extension MSTTools {
     /// 获取 App 版本号 (浮点型)
     ///
     /// - Returns: 版本号
-    class func appVersion() -> Double {
+    public class func appVersion() -> Double {
         return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! Double
     }
     
     /// 获取 App 版本号 (字符串)
     ///
     /// - Returns: 版本号
-    class func appStringVersion() -> String {
+    public class func appStringVersion() -> String {
         return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     }
     
     /// BundleID
-    class func appBundleIdentifier() -> String {
+    public class func appBundleIdentifier() -> String {
         return Bundle.main.bundleIdentifier!
     }
     
     /// 系统版本号
-    class func systemVersion() -> Double {
+    public class func systemVersion() -> Double {
         return Double(UIDevice.current.systemVersion)!
     }
     
     /// 是否是 iPad
-    class func isiPad() -> Bool {
+    public class func isiPad() -> Bool {
         return UI_USER_INTERFACE_IDIOM() == .pad
     }
 }
@@ -126,7 +126,7 @@ extension MSTTools {
     /// 设置状态栏颜色
     ///
     /// - Parameter color: 颜色
-    class func setStatusBarBackgroundColor(_ color: UIColor) {
+    public class func setStatusBarBackgroundColor(_ color: UIColor) {
         let statusBarWindow: UIView = UIApplication.shared.value(forKey: "statusBarWindow") as! UIView
         let statusBar: UIView = statusBarWindow.value(forKey: "statusBar") as! UIView
         
@@ -139,27 +139,27 @@ extension MSTTools {
 // MARK: - 文件操作
 extension MSTTools {
     /// 获取 Documents 路径
-    class func documentsPath() -> String {
+    public class func documentsPath() -> String {
         return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
     }
     
     /// 获取 Library 路径
-    class func libraryPath() -> String {
+    public class func libraryPath() -> String {
         return NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!
     }
     
     /// 获取 Cache 路径
-    class func cachePath() -> String {
+    public class func cachePath() -> String {
         return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
     }
     
     /// 获取 Home 路径
-    class func homePath() -> String {
+    public class func homePath() -> String {
         return NSHomeDirectory()
     }
     
     /// 获取 tmp 路径
-    class func tmpPath() -> String {
+    public class func tmpPath() -> String {
         return NSTemporaryDirectory()
     }
     
@@ -167,7 +167,7 @@ extension MSTTools {
     ///
     /// - Parameter fileName: 文件名
     /// - Returns: 文件路径 (Documents目录)
-    class func filePath(name fileName: String) -> String {
+    public class func filePath(name fileName: String) -> String {
         return documentsPath().appending("/\(fileName)")
     }
     
@@ -175,7 +175,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 文件名
-    class func fileName(path: String) -> String {
+    public class func fileName(path: String) -> String {
         let arr: Array<String> = path.components(separatedBy: "/")
         
         return arr.last!
@@ -185,7 +185,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 文件名(不含后缀)
-    class func fileNameWithoutSuffix(path: String) -> String? {
+    public class func fileNameWithoutSuffix(path: String) -> String? {
         let arr: Array<String> = path.components(separatedBy: "/")
         
         if arr.count > 0 {
@@ -204,7 +204,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 是否存在
-    class func fileExist(atPath path: String) -> Bool {
+    public class func fileExist(atPath path: String) -> Bool {
         return FileManager.default.fileExists(atPath: path)
     }
     
@@ -212,7 +212,7 @@ extension MSTTools {
     ///
     /// - Parameter fileName: 文件名(Documents目录)
     /// - Returns: 是否存在
-    class func fileExist(withName fileName: String) -> Bool {
+    public class func fileExist(withName fileName: String) -> Bool {
         return fileExist(atPath: filePath(name: fileName))
     }
     
@@ -220,7 +220,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 是否为文件夹
-    class func filePathIsDirectory(atPath path: String) -> Bool {
+    public class func filePathIsDirectory(atPath path: String) -> Bool {
         guard fileExist(atPath: path) else { return false }
         
         var isDir: ObjCBool = false
@@ -233,7 +233,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 文件大小，返回 -1 则获取失败
-    class func fileLength(atPath path: String) -> Int64 {
+    public class func fileLength(atPath path: String) -> Int64 {
         // 判断是否为文件夹, 以及文件是否存在
         var isDir: ObjCBool = false
         let isExists: Bool = FileManager.default.fileExists(atPath: path, isDirectory: &isDir)
@@ -273,7 +273,7 @@ extension MSTTools {
     ///
     /// - Parameter fileName: 文件名(Documents目录)
     /// - Returns: 文件大小，返回 -1 则获取失败
-    class func fileLength(withName fileName: String) -> Int64 {
+    public class func fileLength(withName fileName: String) -> Int64 {
         return fileLength(atPath: filePath(name: fileName))
     }
     
@@ -281,7 +281,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 文件大小，返回 nil 则获取失败
-    class func fileSize(atPath path: String) -> String? {
+    public class func fileSize(atPath path: String) -> String? {
         guard fileExist(atPath: path) else { return nil }
         
         do {
@@ -297,7 +297,7 @@ extension MSTTools {
     ///
     /// - Parameter fileName: 文件名(Documents目录)
     /// - Returns: 文件大小，返回 nil 则获取失败
-    class func fileSize(withName fileName: String) -> String? {
+    public class func fileSize(withName fileName: String) -> String? {
         return fileSize(atPath: filePath(name: fileName))
     }
     
@@ -305,7 +305,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 是否创建成功
-    class func createFile(atPath path: String) -> Bool {
+    public class func createFile(atPath path: String) -> Bool {
         guard !fileExist(atPath: path) else { return true }
         
         return FileManager.default.createFile(atPath: path, contents: nil, attributes: nil);
@@ -315,7 +315,7 @@ extension MSTTools {
     ///
     /// - Parameter fileName: 文件名(Documents目录)
     /// - Returns: 是否创建成功
-    class func createFile(withName fileName: String) -> String? {
+    public class func createFile(withName fileName: String) -> String? {
         let path: String = filePath(name: fileName)
         
         guard !fileExist(atPath: path) else { return path }
@@ -331,7 +331,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 是否创建成功
-    class func createDirectory(atPath path: String) -> String? {
+    public class func createDirectory(atPath path: String) -> String? {
         guard !fileExist(atPath: path) || (fileExist(atPath: path) && !filePathIsDirectory(atPath: path)) else { return path }
         
         do {
@@ -347,7 +347,7 @@ extension MSTTools {
     ///
     /// - Parameter dirName: 文件夹名(Documents目录)
     /// - Returns: 是否创建成功
-    class func createDirectory(withName dirName: String) -> String? {
+    public class func createDirectory(withName dirName: String) -> String? {
         return createDirectory(atPath: filePath(name: dirName))
     }
     
@@ -355,7 +355,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件路径
     /// - Returns: 是否删除成功
-    class func deleteFile(atPath path: String) -> Bool {
+    public class func deleteFile(atPath path: String) -> Bool {
         do {
             try FileManager.default.removeItem(atPath: path)
             
@@ -369,7 +369,7 @@ extension MSTTools {
     ///
     /// - Parameter fileName: 文件名(Documents目录)
     /// - Returns: 是否删除成功
-    class func deleteFile(withName fileName: String) -> Bool {
+    public class func deleteFile(withName fileName: String) -> Bool {
         return deleteFile(atPath: filePath(name: fileName))
     }
     
@@ -377,7 +377,7 @@ extension MSTTools {
     ///
     /// - Parameter path: 文件夹路径
     /// - Returns: 是否删除成功
-    class func deleteDirectoryContent(atPath path: String) -> Bool {
+    public class func deleteDirectoryContent(atPath path: String) -> Bool {
         guard filePathIsDirectory(atPath: path) else { return false }
         
         var result: Bool = true
@@ -400,7 +400,7 @@ extension MSTTools {
     ///
     /// - Parameter dirName: 文件夹名(Documents目录)
     /// - Returns: 是否删除成功
-    class func deleteDirectoryContent(withName dirName: String) -> Bool {
+    public class func deleteDirectoryContent(withName dirName: String) -> Bool {
         return deleteDirectoryContent(atPath: filePath(name: dirName))
     }
     
@@ -410,7 +410,7 @@ extension MSTTools {
     ///   - oldPath: 原文件路径
     ///   - newPath: 新文件路径
     /// - Returns: 是否重命名成功
-    class func renameFile(oldPath: String, newPath: String) -> Bool {
+    public class func renameFile(oldPath: String, newPath: String) -> Bool {
         guard fileExist(atPath: oldPath) else { return false }
         
         if fileExist(atPath: newPath) {
@@ -432,7 +432,7 @@ extension MSTTools {
     ///   - oldName: 原文件名(Documents目录)
     ///   - newName: 新文件名(Documents目录)
     /// - Returns: 是否重命名成功
-    class func renameFile(oldName: String, newName: String) -> Bool {
+    public class func renameFile(oldName: String, newName: String) -> Bool {
         return renameFile(oldPath: filePath(name: oldName), newPath: filePath(name: newName))
     }
     
@@ -442,7 +442,7 @@ extension MSTTools {
     ///   - path: 文件路径
     ///   - content: 字符串内容
     /// - Returns: 是否成功
-    class func writeContentToFile(atPath path: String, content: String) -> Bool {
+    public class func writeContentToFile(atPath path: String, content: String) -> Bool {
         guard !content.isEmpty else { return false }
         let fos: OutputStream = OutputStream(toFileAtPath: path, append: true)!
         
@@ -463,14 +463,14 @@ extension MSTTools {
     ///   - fileName: 文件名(Documents目录)
     ///   - content: 字符串内容
     /// - Returns: 是否成功
-    class func writeContentToFile(withName fileName: String, content: String) -> Bool {
+    public class func writeContentToFile(withName fileName: String, content: String) -> Bool {
         return writeContentToFile(atPath: filePath(name: fileName), content: content)
     }
     
     /// 输出日志
     ///
     /// - Parameter content: 日志内容
-    class func writeLog(content: String) {
+    public class func writeLog(content: String) {
         guard !content.mst_isEmptyWithoutWhiteSpace else { return }
         
         let dirName: String = "MSTLogs"
@@ -498,7 +498,7 @@ extension MSTTools {
     ///
     /// - Parameter string: 字符串
     /// - Returns: Json
-    class func convertStringToJsonString(string: String) -> String {
+    public class func convertStringToJsonString(string: String) -> String {
         return "\"\(string.replacingOccurrences(of: "\n", with: "\\n").replacingOccurrences(of: "\"", with: "\\\""))\""
     }
     
@@ -506,7 +506,7 @@ extension MSTTools {
     ///
     /// - Parameter dictionary: 字典
     /// - Returns: Json
-    class func convertDictionaryToJsonString(dictionary: Dictionary<String, Any>) -> String {
+    public class func convertDictionaryToJsonString(dictionary: Dictionary<String, Any>) -> String {
         do {
             let jsonData: Data = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
             
@@ -520,7 +520,7 @@ extension MSTTools {
     ///
     /// - Parameter array: 数组
     /// - Returns: Json
-    class func convertArrayToJsonString(array: Array<Any>) -> String {
+    public class func convertArrayToJsonString(array: Array<Any>) -> String {
         do {
             let jsonData: Data = try JSONSerialization.data(withJSONObject: array, options: .prettyPrinted)
             
@@ -534,7 +534,7 @@ extension MSTTools {
     ///
     /// - Parameter string: Json
     /// - Returns: 字典
-    class func convertJsonStringToDic(string: String) -> Dictionary<String, Any>? {
+    public class func convertJsonStringToDic(string: String) -> Dictionary<String, Any>? {
         let data: Data? = string.data(using: .utf8)
         
         guard data != nil else { return nil }
@@ -552,7 +552,7 @@ extension MSTTools {
     ///
     /// - Parameter string: Json
     /// - Returns: 数组
-    class func convertJsonStringToArray(string: String) -> Array<Any>? {
+    public class func convertJsonStringToArray(string: String) -> Array<Any>? {
         let data: Data? = string.data(using: .utf8)
         
         guard data != nil else { return nil }
@@ -568,7 +568,7 @@ extension MSTTools {
 }
 
 // MARK: - 时间
-enum MSTDateFormat: String {
+public enum MSTDateFormat: String {
     // 日期格式
     case yyyy = "yyyy"
     case yyyy_MM = "yyyy-MM"
@@ -592,7 +592,7 @@ extension MSTTools {
     ///
     /// - Parameter timestamp: 时间戳(1970，毫秒级)
     /// - Returns: Date
-    class func date(fromTimestamp timestamp: String) -> Date {
+    public class func date(fromTimestamp timestamp: String) -> Date {
         return Date(timeIntervalSince1970: TimeInterval(timestamp)!/1000)
     }
     
@@ -600,7 +600,7 @@ extension MSTTools {
     ///
     /// - Parameter date: Date
     /// - Returns: 时间戳(1970，毫秒级)
-    class func timestamp(byDate date: Date) -> String {
+    public class func timestamp(byDate date: Date) -> String {
         return "\(Int64(date.timeIntervalSince1970 * 1000))"
     }
     
@@ -610,7 +610,7 @@ extension MSTTools {
     ///   - time: 格式化时间
     ///   - format: 时间格式
     /// - Returns: 时间戳(1970，毫秒级)
-    class func timestamp(byFormatTime time: String, format: String) -> String {
+    public class func timestamp(byFormatTime time: String, format: String) -> String {
         let date: Date? = mp_dateFormat(format: format).date(from: time)
         
         guard date != nil else { return "0" }
@@ -621,7 +621,7 @@ extension MSTTools {
     /// 获取当前时间戳
     ///
     /// - Returns: 时间戳(1970，毫秒级)
-    class func timestamp() -> String {
+    public class func timestamp() -> String {
         return timestamp(byDate: Date())
     }
     
@@ -631,7 +631,7 @@ extension MSTTools {
     ///   - timestamp: 时间戳(1970，毫秒级)
     ///   - format: 时间格式
     /// - Returns: 格式化后时间
-    class func formatTime(byTimestamp timestamp: String, format: String) -> String {
+    public class func formatTime(byTimestamp timestamp: String, format: String) -> String {
         return mp_dateFormat(format: format).string(from: date(fromTimestamp: timestamp))
     }
     
@@ -639,12 +639,12 @@ extension MSTTools {
     ///
     /// - Parameter format: 时间格式
     /// - Returns: 格式化后时间
-    class func formatTime(withFormat format: String) -> String {
+    public class func formatTime(withFormat format: String) -> String {
         return formatTime(byTimestamp: timestamp(), format: format)
     }
     
     /// 系统启动时间
-    class func uptime() -> TimeInterval {
+    public class func uptime() -> TimeInterval {
         return ProcessInfo.processInfo.systemUptime
     }
     

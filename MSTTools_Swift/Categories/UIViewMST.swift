@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Frame
 extension UIView {
-    var mst_top: CGFloat {
+    public var mst_top: CGFloat {
         get {
             return frame.origin.y
         }
@@ -19,7 +19,7 @@ extension UIView {
         }
     }
     
-    var mst_left: CGFloat {
+    public var mst_left: CGFloat {
         get {
             return frame.origin.x
         }
@@ -28,7 +28,7 @@ extension UIView {
         }
     }
     
-    var mst_right: CGFloat {
+    public var mst_right: CGFloat {
         get {
             return mst_left + mst_width
         }
@@ -37,7 +37,7 @@ extension UIView {
         }
     }
     
-    var mst_bottom: CGFloat {
+    public var mst_bottom: CGFloat {
         get {
             return mst_top + mst_width
         }
@@ -46,7 +46,7 @@ extension UIView {
         }
     }
     
-    var mst_width: CGFloat {
+    public var mst_width: CGFloat {
         get {
             return frame.size.width
         }
@@ -55,7 +55,7 @@ extension UIView {
         }
     }
     
-    var mst_height: CGFloat {
+    public var mst_height: CGFloat {
         get {
             return frame.size.height
         }
@@ -64,7 +64,7 @@ extension UIView {
         }
     }
     
-    var mst_mstCenterX: CGFloat {
+    public var mst_mstCenterX: CGFloat {
         get {
             return center.x
         }
@@ -73,7 +73,7 @@ extension UIView {
         }
     }
     
-    var mst_mstCenterY: CGFloat {
+    public var mst_mstCenterY: CGFloat {
         get {
             return center.y
         }
@@ -82,7 +82,7 @@ extension UIView {
         }
     }
     
-    var mst_origin: CGPoint {
+    public var mst_origin: CGPoint {
         get {
             return frame.origin
         }
@@ -91,7 +91,7 @@ extension UIView {
         }
     }
     
-    var mst_size: CGSize {
+    public var mst_size: CGSize {
         get {
             return frame.size
         }
@@ -104,12 +104,12 @@ extension UIView {
 // MARK: - Subview
 extension UIView {
     /// 根据 tag 获得子视图
-    func mst_subview(tag: Int) -> UIView? {
+    public func mst_subview(tag: Int) -> UIView? {
         return self.viewWithTag(tag)
     }
     
     /// 删除所有子视图
-    func mst_removeAllSubviews() {
+    public func mst_removeAllSubviews() {
         while subviews.count > 0 {
             let subview = subviews.first
             subview?.removeFromSuperview()
@@ -118,7 +118,7 @@ extension UIView {
     
     
     /// 根据 tag 删除子视图
-    func mst_removeSubview(tag: Int) {
+    public func mst_removeSubview(tag: Int) {
         guard tag != 0 else { return }
 
         let subview = mst_subview(tag: tag)
@@ -126,14 +126,14 @@ extension UIView {
     }
     
     /// 根据 tags 删除多个子视图
-    func mst_removeSubviews(tags: Array<Int>) {
+    public func mst_removeSubviews(tags: Array<Int>) {
         for tag in tags {
             mst_removeSubview(tag: tag)
         }
     }
     
     /// 删除比该 tag 小的视图
-    func mst_removeSubviewLessThan(tag: Int) {
+    public func mst_removeSubviewLessThan(tag: Int) {
         var views: Array<UIView> = []
         for subview in subviews {
             if subview.tag != 0 && subview.tag < tag {
@@ -144,7 +144,7 @@ extension UIView {
     }
     
     /// 删除比该 tag 大的视图
-    func mst_removeSubviewGreaterThan(tag: Int) {
+    public func mst_removeSubviewGreaterThan(tag: Int) {
         var views: Array<UIView> = []
         for subview in subviews {
             if subview.tag != 0 && subview.tag > tag {
@@ -164,7 +164,7 @@ extension UIView {
 // MARK: - View Controller
 extension UIView {
     /// 得到该视图所在的视图控制器
-    func mst_responderViewController() -> UIViewController? {
+    public func mst_responderViewController() -> UIViewController? {
         var next:UIView? = self
         
         repeat {
@@ -181,18 +181,18 @@ extension UIView {
 // MARK: - Draw Rect
 extension UIView {
     /// 设置圆形
-    func mst_circular() {
+    public func mst_circular() {
         mst_cornerRadius(radius: mst_width/2.0)
     }
     
     /// 设置圆角
-    func mst_cornerRadius(radius: CGFloat) {
+    public func mst_cornerRadius(radius: CGFloat) {
         layer.cornerRadius = radius
         layer.masksToBounds = true
     }
     
     /// 设置某几个角为圆角
-    func mst_corners(_ corners: UIRectCorner, radius: CGFloat) {
+    public func mst_corners(_ corners: UIRectCorner, radius: CGFloat) {
         let maskPath: UIBezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let maskLayer: CAShapeLayer = CAShapeLayer()
         maskLayer.frame = bounds
@@ -201,7 +201,7 @@ extension UIView {
     }
 
     /// 设置圆角线框
-    func mst_addBorder(radius: CGFloat, lineWidth width: CGFloat, lineColor color: UIColor) {
+    public func mst_addBorder(radius: CGFloat, lineWidth width: CGFloat, lineColor color: UIColor) {
         mst_cornerRadius(radius: radius)
         layer.borderWidth = width
         layer.borderColor = color.cgColor
@@ -210,7 +210,7 @@ extension UIView {
 
 // MARK: - Gesture
 extension UIView {
-    func mst_addTapGesture(target: Any?, action: Selector?) {
+    public func mst_addTapGesture(target: Any?, action: Selector?) {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: target, action: action)
         
         self.addGestureRecognizer(tap)
