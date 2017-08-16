@@ -91,6 +91,11 @@ open class MSTTools {
 
 // MARK:- 系统
 extension MSTTools {
+    /// 获取 App 版本号 (浮点型)
+    public class func appVersion() -> Double {
+        return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! Double
+    }
+    
     /// 获取 App 版本号 (字符串)
     public class func appStringVersion() -> String {
         return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -106,9 +111,14 @@ extension MSTTools {
         return Bundle.main.bundleIdentifier!
     }
     
-    /// 内部版本号 (字符串)
+    // 内部版本号 (浮点型)
+    public class func bundleVersion() -> Double {
+        return Bundle.main.infoDictionary!["CFBundleVersion"] as! Double
+    }
+    
+    // 内部版本号 (字符串)
     public class func bundleStringVersion() -> String {
-        return Bundle.main.infoDictionary![String(kCFBundleVersionKey)] as! String
+        return Bundle.main.infoDictionary!["CFBundleVersion"] as! String
     }
     
     /// 系统版本号
